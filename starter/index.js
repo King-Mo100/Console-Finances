@@ -93,3 +93,15 @@ console.log("------------------------")
 totalMonths = finances.length
 
 console.log( "Total Months: " + totalMonths)
+
+//total
+
+var total = 0;
+
+for (var i = 0; i < finances.length; i++) {
+    total += finances[i][1];
+}
+
+console.log("total: " + total);
+
+

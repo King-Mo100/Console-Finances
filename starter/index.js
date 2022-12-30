@@ -1,3 +1,5 @@
+//finances value
+
 var finances = [
 ['Jan-2010', 867884],
 ['Feb-2010', 984655],
@@ -102,6 +104,40 @@ for (var i = 0; i < finances.length; i++) {
     total += finances[i][1];
 }
 
-console.log("total: " + total);
+console.log("Total: " + total);
 
 
+// average change
+
+var totalChange = 0;
+for (var i = 1; i < totalMonths; i++) {
+  totalChange += finances[i][1] - finances[i - 1][1];
+}
+var averageChange = totalChange / (totalMonths - 1);
+var roundedAverage = averageChange.toFixed(2)
+console.log('Average change: ' + roundedAverage);
+
+// greatest increase
+var greatestIncrease = { month: finances[0][0], value: finances[0][1] };
+for (var i = 1; i < totalMonths; i++) {
+  var change = finances[i][1] - finances[i - 1][1];
+  if (change > greatestIncrease.value) {
+    greatestIncrease.month = finances[i][0];
+    greatestIncrease.value = change;
+    
+  }
+}
+console.log('Greatest increase: ' + greatestIncrease.month + ' (' + greatestIncrease.value + ')');
+
+
+// greatest decrease
+var greatestDecrease = { month: finances[0][0], value: finances[0][1] };
+for (var i = 1; i < totalMonths; i++) {
+  var change = finances[i][1] - finances[i - 1][1];
+  if (change < greatestDecrease.value) {
+    greatestDecrease.month = finances[i][0];
+    greatestDecrease.value = change;
+  }
+}
+
+console.log('Greatest decrease: ' + greatestDecrease.month + ' (' + greatestDecrease.value + ')');
